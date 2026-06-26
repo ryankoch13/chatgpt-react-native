@@ -1,0 +1,1 @@
+This project is intended to be a front-end library used within an existing React Native project to allow users to easily integrate ChatGPT functionality into their app. 
