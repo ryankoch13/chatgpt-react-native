@@ -1,12 +1,12 @@
 export enum ChatGPTRole {
-    User = "user",
-    Assistant = "assistant",
+  User = "user",
+  Assistant = "assistant",
 }
 
 export enum ChatGPTMessageStatus {
-    Idle = "idle",
-    Sending = "sending",
-    Error = "error",
+  Idle = "idle",
+  Sending = "sending",
+  Error = "error",
 }
 
 export interface ChatGPTMessage {

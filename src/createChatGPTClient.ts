@@ -1,6 +1,6 @@
 import {
-    ChatGPTMessageStatus,
-    ChatGPTRole,
+  ChatGPTMessageStatus,
+  ChatGPTRole,
   type ChatGPTClientOptions,
   type ChatGPTMessage,
   type ChatGPTServerResponse,
@@ -20,7 +20,7 @@ function createId() {
 
 export function createChatGPTClient(options: ChatGPTClientOptions) {
   async function sendMessage(
-    input: SendChatGPTMessageInput
+    input: SendChatGPTMessageInput,
   ): Promise<SendChatGPTMessageResult> {
     const response = await fetch(options.endpoint, {
       method: "POST",

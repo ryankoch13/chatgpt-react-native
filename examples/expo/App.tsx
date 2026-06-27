@@ -1,4 +1,7 @@
-import { SafeAreaProvider, initialWindowMetrics } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 import { ChatGPTView } from "@ryankoch13/chatgpt-react-native";
 import { chatGPTConfig } from "./src/config/chatgpt";
 import { StyleSheet } from "react-native";

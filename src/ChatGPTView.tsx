@@ -11,9 +11,16 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { useChatGPT } from "./useChatGPT";
-import { ChatGPTMessageStatus, ChatGPTRole, type ChatGPTMessage } from "./types";
+import {
+  ChatGPTMessageStatus,
+  ChatGPTRole,
+  type ChatGPTMessage,
+} from "./types";
 
 export interface ChatGPTViewTheme {
   backgroundColor?: string;
@@ -99,8 +106,8 @@ export function ChatGPTView({
             styles.bubble,
             {
               backgroundColor: isUser
-                ? theme?.userBubbleColor ?? "#111827"
-                : theme?.assistantBubbleColor ?? "#F3F4F6",
+                ? (theme?.userBubbleColor ?? "#111827")
+                : (theme?.assistantBubbleColor ?? "#F3F4F6"),
             },
           ]}
         >
@@ -109,8 +116,8 @@ export function ChatGPTView({
               styles.messageText,
               {
                 color: isUser
-                  ? theme?.userTextColor ?? "#FFFFFF"
-                  : theme?.assistantTextColor ?? "#111827",
+                  ? (theme?.userTextColor ?? "#FFFFFF")
+                  : (theme?.assistantTextColor ?? "#111827"),
               },
             ]}
           >
@@ -123,8 +130,8 @@ export function ChatGPTView({
                 styles.statusText,
                 {
                   color: isUser
-                    ? theme?.userTextColor ?? "#FFFFFF"
-                    : theme?.assistantTextColor ?? "#111827",
+                    ? (theme?.userTextColor ?? "#FFFFFF")
+                    : (theme?.assistantTextColor ?? "#111827"),
                 },
               ]}
             >
@@ -133,7 +140,12 @@ export function ChatGPTView({
           ) : null}
 
           {item.status === ChatGPTMessageStatus.Error ? (
-            <Text style={[styles.statusText, { color: theme?.errorColor ?? "#DC2626" }]}>
+            <Text
+              style={[
+                styles.statusText,
+                { color: theme?.errorColor ?? "#DC2626" },
+              ]}
+            >
               Failed to send
             </Text>
           ) : null}
@@ -144,7 +156,7 @@ export function ChatGPTView({
 
   return (
     <SafeAreaView
-        edges={["top", "left", "right"]}
+      edges={["top", "left", "right"]}
       style={[
         styles.safeArea,
         { backgroundColor: theme?.backgroundColor ?? "#FFFFFF" },
@@ -176,7 +188,9 @@ export function ChatGPTView({
           data={messages}
           keyExtractor={(item) => item.id}
           renderItem={(info) =>
-            renderMessage ? renderMessage(info.item) : defaultRenderMessage(info)
+            renderMessage
+              ? renderMessage(info.item)
+              : defaultRenderMessage(info)
           }
           contentContainerStyle={styles.messageList}
           keyboardShouldPersistTaps="handled"
@@ -185,28 +199,35 @@ export function ChatGPTView({
           }}
           ListEmptyComponent={
             <View style={styles.emptyState}>
-              <Text style={styles.emptyText}>Ask a question to get started.</Text>
+              <Text style={styles.emptyText}>
+                Ask a question to get started.
+              </Text>
             </View>
           }
         />
 
         {error ? (
           <View style={styles.errorContainer}>
-            <Text style={[styles.errorText, { color: theme?.errorColor ?? "#DC2626" }]}>
+            <Text
+              style={[
+                styles.errorText,
+                { color: theme?.errorColor ?? "#DC2626" },
+              ]}
+            >
               {error.message}
             </Text>
           </View>
         ) : null}
 
         <View
-  style={[
-    styles.inputRow,
-    {
-      borderTopColor: theme?.borderColor ?? "#E5E7EB",
-      paddingBottom: Math.max(insets.bottom, 12),
-    },
-  ]}
->
+          style={[
+            styles.inputRow,
+            {
+              borderTopColor: theme?.borderColor ?? "#E5E7EB",
+              paddingBottom: Math.max(insets.bottom, 12),
+            },
+          ]}
+        >
           <TextInput
             value={input}
             onChangeText={setInput}
@@ -324,13 +345,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   inputRow: {
-  borderTopWidth: StyleSheet.hairlineWidth,
-  paddingTop: 12,
-  paddingHorizontal: 12,
-  flexDirection: "row",
-  alignItems: "flex-end",
-  gap: 8,
-},
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: 12,
+    paddingHorizontal: 12,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    gap: 8,
+  },
   input: {
     flex: 1,
     minHeight: 42,

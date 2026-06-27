@@ -23,7 +23,7 @@ export interface UseChatGPTOptions extends ChatGPTClientOptions {
 
 export function useChatGPT(options: UseChatGPTOptions) {
   const [messages, setMessages] = useState<ChatGPTMessage[]>(
-    options.initialMessages ?? []
+    options.initialMessages ?? [],
   );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -40,18 +40,18 @@ export function useChatGPT(options: UseChatGPTOptions) {
         endpoint: options.endpoint,
         headers: options.headers,
       }),
-    [options.endpoint, options.headers]
+    [options.endpoint, options.headers],
   );
 
   const updateMessageStatus = useCallback(
     (id: string, status: ChatGPTMessageStatus) => {
       setMessages((current) =>
         current.map((message) =>
-          message.id === id ? { ...message, status } : message
-        )
+          message.id === id ? { ...message, status } : message,
+        ),
       );
     },
-    []
+    [],
   );
 
   const sendMessage = useCallback(
@@ -90,9 +90,9 @@ export function useChatGPT(options: UseChatGPTOptions) {
             .map((message) =>
               message.id === userMessage.id
                 ? { ...message, status: ChatGPTMessageStatus.Idle as const }
-                : message
+                : message,
             )
-            .concat(result.message)
+            .concat(result.message),
         );
       } catch (err) {
         if (controller.signal.aborted) {
@@ -109,7 +109,7 @@ export function useChatGPT(options: UseChatGPTOptions) {
         abortRef.current = null;
       }
     },
-    [client, isLoading, updateMessageStatus]
+    [client, isLoading, updateMessageStatus],
   );
 
   const stop = useCallback(() => {
