@@ -3,7 +3,6 @@ import cors from "cors";
 import OpenAI from "openai";
 import { Config } from "react-native-config";
 import { ChatGPTRole } from "../src/types";
-
 const app = express();
 
 app.use(cors());

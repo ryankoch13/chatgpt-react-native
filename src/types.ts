@@ -1,6 +1,6 @@
 export enum ChatGPTRole {
-    User = "USER",
-    Assistant = "ASSISTANT",
+    User = "user",
+    Assistant = "assistant",
 }
 
 export enum ChatGPTMessageStatus {
