@@ -11,7 +11,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { useChatGPT } from "./useChatGPT";
 import { ChatGPTMessageStatus, ChatGPTRole, type ChatGPTMessage } from "./types";
 
@@ -55,6 +55,7 @@ export function ChatGPTView({
 }: ChatGPTViewProps) {
   const [input, setInput] = useState("");
   const listRef = useRef<FlatList<ChatGPTMessage>>(null);
+  const insets = useSafeAreaInsets();
 
   const { messages, isLoading, error, sendMessage, stop, clear } = useChatGPT({
     endpoint,
@@ -143,6 +144,7 @@ export function ChatGPTView({
 
   return (
     <SafeAreaView
+        edges={["top", "left", "right"]}
       style={[
         styles.safeArea,
         { backgroundColor: theme?.backgroundColor ?? "#FFFFFF" },
@@ -197,13 +199,14 @@ export function ChatGPTView({
         ) : null}
 
         <View
-          style={[
-            styles.inputRow,
-            {
-              borderTopColor: theme?.borderColor ?? "#E5E7EB",
-            },
-          ]}
-        >
+  style={[
+    styles.inputRow,
+    {
+      borderTopColor: theme?.borderColor ?? "#E5E7EB",
+      paddingBottom: Math.max(insets.bottom, 12),
+    },
+  ]}
+>
           <TextInput
             value={input}
             onChangeText={setInput}
@@ -321,12 +324,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   inputRow: {
-    borderTopWidth: StyleSheet.hairlineWidth,
-    padding: 12,
-    flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 8,
-  },
+  borderTopWidth: StyleSheet.hairlineWidth,
+  paddingTop: 12,
+  paddingHorizontal: 12,
+  flexDirection: "row",
+  alignItems: "flex-end",
+  gap: 8,
+},
   input: {
     flex: 1,
     minHeight: 42,

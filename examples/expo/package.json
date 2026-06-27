@@ -1,0 +1,20 @@
+{
+  "name": "chatgpt-react-native-expo-example",
+  "private": true,
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android"
+  },
+  "dependencies": {
+    "@ryankoch/chatgpt-react-native": "file:../..",
+    "expo": "~53.0.0",
+    "react": "19.0.0",
+    "react-native": "0.79.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

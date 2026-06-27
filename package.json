@@ -39,7 +39,6 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "openai": "^6.45.0",
-    "react-native-config": "^1.6.1",
     "react-native-safe-area-context": "^5.8.0"
   }
 }
