@@ -1,0 +1,45 @@
+{
+  "name": "@ryankoch/chatgpt-react-native",
+  "version": "0.1.0",
+  "description": "A React Native chat UI and hook for integrating ChatGPT through your own backend.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-native": ">=0.72"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "react": "^18.0.0",
+    "react-native": "^0.83.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react --external react-native",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "react-native",
+    "chatgpt",
+    "openai",
+    "chat",
+    "ai"
+  ],
+  "dependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "openai": "^6.45.0",
+    "react-native-config": "^1.6.1",
+    "react-native-safe-area-context": "^5.8.0"
+  }
+}
